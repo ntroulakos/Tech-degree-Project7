@@ -1,0 +1,349 @@
+/* ===== Reset and Global Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* Sidebar on the left, main content on the right */
+    grid-template-rows: auto 1fr; /* Header on top, main content below */
+    grid-template-areas: "sidebar main"; /* Define areas for sidebar and main content */
+    height: 100vh;
+    margin: 0;
+}
+
+/* ===== Header Styles ===== */
+.header {
+    grid-area: header;
+    background: #9999ff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 16px;
+    color: white;
+}
+
+.header .profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile img  {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.vertical-line {
+    width: 2px;
+    height: 5vh;
+    background-color: #9933ff;
+    margin-left: 10px;
+}
+
+#notifications {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    fill: white;  
+}
+
+.profile h3 {
+    font-size: 16px;
+    color: #555;
+}
+
+/* ===== Sidebar Navigation ===== */
+.sidebar {
+    grid-area: sidebar; /* Ensure this matches the layout of the container */
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 100vh; /* Ensure sidebar takes full height */
+    position: sticky; /* Optional: keeps the sidebar fixed as you scroll */
+    top: 0; /* Keeps it at the top */
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: #34495e;
+}
+
+.sidebar img {
+    width: 24px;
+    height: 24px;
+}
+
+/* ===== Main Content Area ===== */
+.main {
+    display: grid;
+    grid-template-columns: 1fr; /* Default single column for smaller screens */
+    grid-template-rows: auto; /* Automatic row height based on content */
+    margin: 0 auto; /* Center the main content */
+    column-gap: 0px;
+  }
+
+/* ===== Widget Styles ===== */
+.widget {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Dashboard Header ===== */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headline {
+    font-size: 24px;
+    color: #333;
+}
+
+
+
+/* ===== Alert Banner ===== */
+.alert {
+    background: #ffdddd;
+    color: #d32f2f;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    display: none; /* Will be toggled with JavaScript */
+}
+
+/* ===== Traffic Section ===== */
+.traffic {
+    grid-column: 1 / -1; /* Span across all columns (1 column in this case) */
+  }
+
+.traffic-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.traffic-nav {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.traffic-nav li {
+    padding: 5px 10px;
+    background: #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.traffic-nav li.active {
+    background: #2c3e50;
+    color: white;
+}
+
+/* ===== Graph Sections (Bar & Doughnut) ===== */
+.daily, .mobile {
+    grid-column: span 1;
+}
+
+.widget-container-half {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.daily, .mobile, .social, .members-activity {
+    border: 1px solid #ccc; /* Light grey border to divide sections */
+    padding: 20px; /* Space inside each section */
+    background-color: #f9f9f9; /* Light background for sections */
+  }
+
+/* ===== Social Stats Section ===== */
+.social {
+    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+    display: grid;
+    gap: 20px;
+  }
+
+  .social-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.social-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.social-text p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* ===== Members & Recent Activity ===== */
+.members, .activity {
+    grid-column: span 2;
+    display: flex;
+    gap: 20px;
+}
+
+.members-container, .activity-container {
+    flex: 1;
+    padding: 15px;
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.members-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.members-text a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+/* ===== Messaging Section ===== */
+.message {
+    grid-column: span 1;
+}
+
+.message form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-field, .form-area {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button-primary {
+    background: #2c3e50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button-primary:hover {
+    background: #34495e;
+}
+
+/* ===== Settings Section ===== */
+.settings {
+    grid-column: span 1;
+}
+
+.settings select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.settings-button {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.button-disabled {
+    background: #ccc;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: not-allowed;
+    border-radius: 5px;
+}
+
+/* ===== Responsive Design for Mobile ===== */
+@media (min-width: 768px) {
+    .grid-container {
+        grid-template-columns: 55px 1fr; /* Sidebar is 55px, Main fills rest */
+        grid-template-areas:
+            "header header" 
+            "sidebar main";
+    }
+
+    .sidebar {
+        width: 55px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+    }
+
+    .main {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two equal columns */
+        gap: 20px;
+    }
+
+    .traffic, .social {
+        grid-column: 1 / span 2;
+    }
+
+    .bar, .members-container, .message-container {
+        grid-column: 1 / span 1;
+    }   
+    
+    .doughnut, .activity-container, .settings-container {
+        grid-column: 2 / span 1;
+    }
+}
+
+@media (min-width: 768px) {
+    .widget-container-full {
+        width: 90vw; /* Line chart */
+    }
+
+    .widget-container-half {
+        width: 45vw; /* Bar & Doughnut charts */
+    }
+}
