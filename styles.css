@@ -10,7 +10,7 @@ body {
     grid-template-columns: 250px 1fr; /* Sidebar on the left, main content on the right */
     grid-template-rows: auto 1fr; /* Header on top, main content below */
     grid-template-areas: "sidebar main"; /* Define areas for sidebar and main content */
-    height: 100vh;
+    height: 100%;
     margin: 0;
 }
 
@@ -67,7 +67,6 @@ body {
     grid-area: sidebar; /* Ensure this matches the layout of the container */
     background: #2c3e50;
     color: white;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -101,9 +100,12 @@ body {
     display: grid;
     grid-template-columns: 1fr; /* Default single column for smaller screens */
     grid-template-rows: auto; /* Automatic row height based on content */
-    margin: 0 auto; /* Center the main content */
-    column-gap: 0px;
-  }
+}
+
+.row {
+    width: 100%; /* Make the row take full width */
+    grid-column: 1 / -1; /* Span across all columns (1 column in this case) */
+}
 
 /* ===== Widget Styles ===== */
 .widget {
@@ -113,33 +115,43 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.widget-container {
+    margin-right: 10px;
+}
+
 /* ===== Dashboard Header ===== */
 .main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
+    margin: 20px 0;
 }
 
 .headline {
     font-size: 24px;
     color: #333;
+    margin-left: 20px;
 }
 
 
 
 /* ===== Alert Banner ===== */
 .alert {
-    background: #ffdddd;
-    color: #d32f2f;
+    background: #9999ff;
+    color: White;
     padding: 10px;
     text-align: center;
     border-radius: 5px;
-    display: none; /* Will be toggled with JavaScript */
+    margin: 0 20px;
+    display: none;
 }
 
 /* ===== Traffic Section ===== */
 .traffic {
     grid-column: 1 / -1; /* Span across all columns (1 column in this case) */
+    margin-top: 12px;
+    margin-left: 20px;
   }
 
 .traffic-header {
@@ -151,18 +163,19 @@ body {
 .traffic-nav {
     list-style: none;
     display: flex;
+    margin-right: 20px;
     gap: 10px;
 }
 
 .traffic-nav li {
     padding: 5px 10px;
     background: #ddd;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
 }
 
 .traffic-nav li.active {
-    background: #2c3e50;
+    background: green;
     color: white;
 }
 
@@ -177,47 +190,95 @@ body {
     justify-content: center;
 }
 
-.daily, .mobile, .social, .members-activity {
+.daily, .mobile, .social, .members, .activity, .settings, .message {
     border: 1px solid #ccc; /* Light grey border to divide sections */
     padding: 20px; /* Space inside each section */
-    background-color: #f9f9f9; /* Light background for sections */
-  }
+    background-color: white; /* Light background for sections */
+}
 
 /* ===== Social Stats Section ===== */
 .social {
     grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
     display: grid;
-    gap: 20px;
-  }
+    gap: 15px;
+    padding: 20px;
+}
 
-  .social-container {
+.social h3 {
+    grid-column: span 3; /* Make the title span across all columns */
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.social-box {
+    background-color: #ccc;
+    border: 2px solid #ddd; /* Box border */
+    padding: 15px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-  }
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.social-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.social-image-1 {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: #9999ff;
+    display: flex;
+    justify-content: center;
+}
 
 .social-image {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
+    background-color: #9999ff;
+    margin-top: 25%;
 }
+
 
 .social-text p {
     margin: 0;
-    font-size: 14px;
+    font-size: 18px;
     color: #555;
+}
+
+.social-text p:nth-of-type(2) {
+    font-size: 28px;  
 }
 
 /* ===== Members & Recent Activity ===== */
 .members, .activity {
-    grid-column: span 2;
-    display: flex;
-    gap: 20px;
+    grid-column: span 1;
 }
 
-.members-container, .activity-container {
-    flex: 1;
-    padding: 15px;
+.members {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.members-list {
+    list-style: none; /* Removes bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.member-item, .activity-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc; /* Divider */
 }
 
 .profile-image {
@@ -226,7 +287,7 @@ body {
     border-radius: 50%;
 }
 
-.members-text {
+.members-text, .activity-text {
     display: flex;
     flex-direction: column;
 }
@@ -236,8 +297,14 @@ body {
     text-decoration: none;
 }
 
+.member-date, .activity-arrow {
+    margin-left: auto; /* Pushes date to the right */
+    font-size: 14px;
+    color: gray;
+}
+
 /* ===== Messaging Section ===== */
-.message {
+.message, .settings  {
     grid-column: span 1;
 }
 
@@ -255,7 +322,7 @@ body {
 }
 
 .button-primary {
-    background: #2c3e50;
+    background: #9999ff;
     color: white;
     padding: 10px;
     border: none;
@@ -268,10 +335,6 @@ body {
 }
 
 /* ===== Settings Section ===== */
-.settings {
-    grid-column: span 1;
-}
-
 .settings select {
     width: 100%;
     padding: 10px;
@@ -281,7 +344,16 @@ body {
 .settings-button {
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
     gap: 10px;
+}
+
+.settings h3, .message h3 {
+    margin-bottom: 10px;
+}
+
+textarea {
+    height: 80px;
 }
 
 .button-disabled {
@@ -291,6 +363,14 @@ body {
     border: none;
     cursor: not-allowed;
     border-radius: 5px;
+}
+
+#save, #cancel {
+    padding: 12px 24px; /* Add more padding to make the button bigger */
+    border-radius: 8px; /* Optional: Make corners rounded */
+    width: auto; /* Let the width adjust automatically based on padding */
+    height: auto; /* Adjust height based on content and padding */
+    flex-grow: 1;
 }
 
 /* ===== Responsive Design for Mobile ===== */
@@ -303,7 +383,7 @@ body {
     }
 
     .sidebar {
-        width: 55px;
+        width: 45px;
         padding: 10px;
         display: flex;
         flex-direction: column;
@@ -322,18 +402,17 @@ body {
     .main {
         display: grid;
         grid-template-columns: 1fr 1fr; /* Two equal columns */
-        gap: 20px;
     }
 
     .traffic, .social {
         grid-column: 1 / span 2;
     }
 
-    .bar, .members-container, .message-container {
+    .bar, .members-container {
         grid-column: 1 / span 1;
     }   
     
-    .doughnut, .activity-container, .settings-container {
+    .doughnut {
         grid-column: 2 / span 1;
     }
 }
