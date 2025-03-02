@@ -73,6 +73,10 @@ body {
     height: 100vh; /* Ensure sidebar takes full height */
     position: sticky; /* Optional: keeps the sidebar fixed as you scroll */
     top: 0; /* Keeps it at the top */
+    width: 45px;
+    padding: 10px;
+    align-items: center;
+
 }
 
 .sidebar a {
@@ -84,6 +88,11 @@ body {
     gap: 10px;
     border-radius: 5px;
     transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
 }
 
 .sidebar a:hover {
@@ -98,7 +107,7 @@ body {
 /* ===== Main Content Area ===== */
 .main {
     display: grid;
-    grid-template-columns: 1fr; /* Default single column for smaller screens */
+    grid-template-columns: 1fr 1fr; /* Default single column for smaller screens */
     grid-template-rows: auto; /* Automatic row height based on content */
 }
 
@@ -184,10 +193,11 @@ body {
     grid-column: span 1;
 }
 
-.widget-container-half {
-    width: 100%;
+.widget-container-half, .widget-container-full {
+    width: 95vw;
     display: flex;
     justify-content: center;
+    width: 45vw;
 }
 
 .daily, .mobile, .social, .members, .activity, .settings, .message {
@@ -202,6 +212,7 @@ body {
     display: grid;
     gap: 15px;
     padding: 20px;
+    grid-column: 1 / span 2;
 }
 
 .social h3 {
@@ -373,56 +384,103 @@ textarea {
     flex-grow: 1;
 }
 
-/* ===== Responsive Design for Mobile ===== */
-@media (min-width: 768px) {
-    .grid-container {
-        grid-template-columns: 55px 1fr; /* Sidebar is 55px, Main fills rest */
-        grid-template-areas:
-            "header header" 
-            "sidebar main";
-    }
+.grid-container {
+    grid-template-columns: 55px 1fr; /* Sidebar is 55px, Main fills rest */
+    grid-template-areas:
+        "header header" 
+        "sidebar main";
+}
 
-    .sidebar {
-        width: 45px;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+@media (max-width: 480px) { /* 320px is very small and cannot adjust. */
 
-    .sidebar a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        height: 40px;
-        padding: 0;
+    body, html {
+        height: 100%;  
     }
 
     .main {
+        display: flex;
+        flex-direction: column;
+        max-width: 480px;
+    }
+
+    .sidebar {
+        flex-grow: 1;
+        min-height: 300vh;
+    }
+
+    .social {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Two equal columns */
+        grid-template-columns: 1fr; /* Ensure single column for small screens */
+        gap: 15px;
+        padding: 20px;
+        text-align: center; /* Center align the content */
+    }
+    .social h3 {
+        grid-column: span 1; /* Ensure the h3 only spans one column */
+        text-align: left; /* Align the header to the left */
+        margin-bottom: 10px;
     }
 
-    .traffic, .social {
-        grid-column: 1 / span 2;
+    .social-box {
+        width: 70%;
+        margin-left: 12.5%;
     }
 
-    .bar, .members-container {
-        grid-column: 1 / span 1;
-    }   
+    .traffic-header {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the left */
+        gap: 10px; /* Add some spacing */  
+    }
     
-    .doughnut {
-        grid-column: 2 / span 1;
+    .members {
+        order: 1; /* Moves "New Members" to the top */
+    }
+
+    .activity {
+        order: 2; /* Moves "Recent Activity" below "New Members" */
+    }
+
+    .message {
+        order: 3; /* Moves "Message" below "Recent Activity" */
+    }
+
+    .settings {
+        order: 4; /* Moves "Settings" to the bottom */
     }
 }
 
 @media (min-width: 768px) {
-    .widget-container-full {
-        width: 90vw; /* Line chart */
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        max-width: 720px;
     }
 
-    .widget-container-half {
-        width: 45vw; /* Bar & Doughnut charts */
+    .dailymobile {
+        display: grid;
+        grid-template-columns: 50% 50%;
     }
+
+    .social-box {
+        width: 80%;
+    }
+
+    .members {
+        order: 1; /* Moves "New Members" to the top */
+    }
+
+    .activity {
+        order: 2; /* Moves "Recent Activity" below "New Members" */
+    }
+
+    .message {
+        order: 3; /* Moves "Message" below "Recent Activity" */
+    }
+
+    .settings {
+        order: 4; /* Moves "Settings" to the bottom */
+    }    
 }
+
