@@ -11,9 +11,13 @@ body {
     grid-template-rows: auto 1fr; /* Header on top, main content below */
     grid-template-areas: "sidebar main"; /* Define areas for sidebar and main content */
     height: 100%;
-    margin: 0;
+    margin: 0; 
 }
 
+.main {
+    display: flex;
+    flex-direction: column;
+}
 /* ===== Header Styles ===== */
 .header {
     grid-area: header;
@@ -76,7 +80,8 @@ body {
     width: 45px;
     padding: 10px;
     align-items: center;
-
+    flex-grow: 1;
+    min-height: 150vh;
 }
 
 .sidebar a {
@@ -102,18 +107,6 @@ body {
 .sidebar img {
     width: 24px;
     height: 24px;
-}
-
-/* ===== Main Content Area ===== */
-.main {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Default single column for smaller screens */
-    grid-template-rows: auto; /* Automatic row height based on content */
-}
-
-.row {
-    width: 100%; /* Make the row take full width */
-    grid-column: 1 / -1; /* Span across all columns (1 column in this case) */
 }
 
 /* ===== Widget Styles ===== */
@@ -153,27 +146,20 @@ body {
     text-align: center;
     border-radius: 5px;
     margin: 0 20px;
-    display: none;
 }
 
 /* ===== Traffic Section ===== */
 .traffic {
-    grid-column: 1 / -1; /* Span across all columns (1 column in this case) */
     margin-top: 12px;
     margin-left: 20px;
   }
-
-.traffic-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 .traffic-nav {
     list-style: none;
     display: flex;
     margin-right: 20px;
     gap: 10px;
+    margin-top: 10px;;
 }
 
 .traffic-nav li {
@@ -208,16 +194,18 @@ body {
 
 /* ===== Social Stats Section ===== */
 .social {
-    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
-    display: grid;
     gap: 15px;
     padding: 20px;
-    grid-column: 1 / span 2;
+    display: grid;
+    grid-template-columns: 1fr; /* Ensure single column for small screens */
+    text-align: center; /* Center align the content */
 }
 
 .social h3 {
-    grid-column: span 3; /* Make the title span across all columns */
     text-align: left;
+    margin-bottom: 10px;
+    grid-column: span 1; /* Ensure the h3 only spans one column */
+    text-align: left; /* Align the header to the left */
     margin-bottom: 10px;
 }
 
@@ -230,6 +218,8 @@ body {
     align-items: center;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    margin-left: 12.5%; 
 }
 
 .social-container {
@@ -268,20 +258,22 @@ body {
 }
 
 /* ===== Members & Recent Activity ===== */
-.members, .activity {
-    grid-column: span 1;
-}
 
 .members {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    order: 1; 
 }
 
 .members-list {
     list-style: none; /* Removes bullet points */
     padding: 0;
     margin: 0;
+}
+
+.activity {
+    order: 2; /* Moves "Recent Activity" below "New Members" */
 }
 
 .member-item, .activity-item {
@@ -315,8 +307,8 @@ body {
 }
 
 /* ===== Messaging Section ===== */
-.message, .settings  {
-    grid-column: span 1;
+.message {
+    order: 3; /* Moves "Message" below "Recent Activity" */
 }
 
 .message form {
@@ -346,6 +338,11 @@ body {
 }
 
 /* ===== Settings Section ===== */
+
+.settings {
+    order: 4; /* Moves "Settings" to the bottom */
+}
+
 .settings select {
     width: 100%;
     padding: 10px;
@@ -391,71 +388,12 @@ textarea {
         "sidebar main";
 }
 
-@media (max-width: 480px) { /* 320px is very small and cannot adjust. */
-
-    body, html {
-        height: 100%;  
-    }
-
-    .main {
-        display: flex;
-        flex-direction: column;
-        max-width: 480px;
-    }
-
-    .sidebar {
-        flex-grow: 1;
-        min-height: 300vh;
-    }
-
-    .social {
-        display: grid;
-        grid-template-columns: 1fr; /* Ensure single column for small screens */
-        gap: 15px;
-        padding: 20px;
-        text-align: center; /* Center align the content */
-    }
-    .social h3 {
-        grid-column: span 1; /* Ensure the h3 only spans one column */
-        text-align: left; /* Align the header to the left */
-        margin-bottom: 10px;
-    }
-
-    .social-box {
-        width: 70%;
-        margin-left: 12.5%;
-    }
-
-    .traffic-header {
-        display: flex;
-        flex-direction: column; /* Stack items vertically */
-        align-items: flex-start; /* Align items to the left */
-        gap: 10px; /* Add some spacing */  
-    }
-    
-    .members {
-        order: 1; /* Moves "New Members" to the top */
-    }
-
-    .activity {
-        order: 2; /* Moves "Recent Activity" below "New Members" */
-    }
-
-    .message {
-        order: 3; /* Moves "Message" below "Recent Activity" */
-    }
-
-    .settings {
-        order: 4; /* Moves "Settings" to the bottom */
-    }
-}
-
 @media (min-width: 768px) {
 
     .main {
         display: flex;
         flex-direction: column;
-        max-width: 720px;
+        max-width: 1024px;
     }
 
     .dailymobile {
@@ -463,8 +401,23 @@ textarea {
         grid-template-columns: 50% 50%;
     }
 
+    .sidebar {
+        min-height: 100vh;
+    }
+
+    .social {
+        grid-template-columns: repeat(3, 0.5fr); /* 3 equal-width columns */
+        gap: 0;
+        padding: 20px;
+        grid-column: 1 / span 2;
+    }
+    
+    .social h3 {
+        grid-column: span 3; /* Make the title span across all columns */
+    }
+
     .social-box {
-        width: 80%;
+        margin-left: 0;
     }
 
     .members {
@@ -484,3 +437,93 @@ textarea {
     }    
 }
 
+@media (min-width: 1024px) { 
+
+    .main {
+        width: 100%;
+        max-width: none;
+    }
+
+    .traffic {
+        grid-column: 1 / -1; /* Span across all columns (1 column in this case) */
+      }
+    
+    .traffic-header {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the left */
+        gap: 10px; /* Add some spacing */  
+    }
+
+    .social {
+        grid-template-columns: repeat(3, 0.5fr); /* 3 equal-width columns */
+        display: grid;
+        gap: 15px;
+        padding: 20px;
+        grid-column: 1 / span 2;
+        justify-items: center;
+    }
+    
+    .social h3 {
+        grid-column: span 3; /* Make the title span across all columns */
+        text-align: left;
+        margin-bottom: 10px;
+        justify-self: left;
+    }
+    
+    .social-container {
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .social-image-1 {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-right: 10px;
+        background-color: #9999ff;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .social-image {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #9999ff;
+        margin-top: 25%;
+    }
+    
+    .social-text p {
+        margin: 0;
+        font-size: 18px;
+        color: #555;
+    }
+    
+    .social-text p:nth-of-type(2) {
+        font-size: 28px;  
+    }
+    /* ===== Graph Sections (Bar & Doughnut) ===== */
+    .daily, .mobile {
+        grid-column: span 1;
+    }
+
+    .members, .settings {
+        grid-column: span 1; 
+    }
+
+    .widget-container-half, .widget-container-full {
+        width: 95vw;
+        display: flex;
+        justify-content: center;
+        width: 45vw;
+    }
+
+    .daily, .mobile, .social, .members, .activity, .settings, .message {
+        border: 1px solid #ccc; /* Light grey border to divide sections */
+        padding: 20px; /* Space inside each section */
+        background-color: white; /* Light background for sections */
+    }   
+}
