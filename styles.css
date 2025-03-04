@@ -446,7 +446,7 @@ textarea {
 
     .traffic {
         grid-column: 1 / -1; /* Span across all columns (1 column in this case) */
-      }
+    }
     
     .traffic-header {
         display: flex;
@@ -477,41 +477,10 @@ textarea {
         align-items: center;
         text-align: center;
     }
-    
-    .social-image-1 {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        margin-right: 10px;
-        background-color: #9999ff;
-        display: flex;
-        justify-content: center;
-    }
-    
-    .social-image {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background-color: #9999ff;
-        margin-top: 25%;
-    }
-    
-    .social-text p {
-        margin: 0;
-        font-size: 18px;
-        color: #555;
-    }
-    
-    .social-text p:nth-of-type(2) {
-        font-size: 28px;  
-    }
+
     /* ===== Graph Sections (Bar & Doughnut) ===== */
     .daily, .mobile {
         grid-column: span 1;
-    }
-
-    .members, .settings {
-        grid-column: span 1; 
     }
 
     .widget-container-half, .widget-container-full {
@@ -521,9 +490,8 @@ textarea {
         width: 45vw;
     }
 
-    .daily, .mobile, .social, .members, .activity, .settings, .message {
-        border: 1px solid #ccc; /* Light grey border to divide sections */
-        padding: 20px; /* Space inside each section */
-        background-color: white; /* Light background for sections */
-    }   
+    .membersactivity, .messagesettings{
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
 }
