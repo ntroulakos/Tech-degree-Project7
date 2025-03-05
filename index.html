@@ -75,14 +75,14 @@
         <div class="dailymobile">
             <section class="daily">
                 <h3>Daily Traffic</h3>
-                <div class="widget-container-half bar">
+                <div class="widget-container-half">
                     <canvas id="daily-chart"></canvas>
                 </div>
             </section>
             <section class="mobile">
                 <h3>Mobile Users</h3>
-                <div class="widget-container-half doughnut"> 
-                    <canvas id="MobileUsers-chart"></canvas>
+                <div class="widget-container-half"> 
+                    <canvas id="mobile-chart"></canvas>
                 </div>
             </section>
         </div>
@@ -233,7 +233,22 @@
             </section>
             <section class="settings">
                     <h3>Settings</h3>
-                    <!-- Custom CSS Toggle Code Here -->
+                    <div class="setting-item">
+                        <span>Email Notifications: </span>
+                        <label class="switch">
+                            <input type="checkbox" id="emailNotifications">
+                            <span class="slider round"></span>
+                        </label>    
+                    </div>
+                
+                    <!-- Profile Visibility -->
+                    <div class="setting-item">
+                        <span>Profile Visibility: </span>
+                        <label class="switch">
+                            <input type="checkbox" id="profileVisibility">
+                            <span class="slider round"></span>
+                        </label>    
+                    </div>
                     <select class="form-field" id="timezone">
                         <option disabled selected>Select a Timezone</option>
                         <option>Eastern</option>

@@ -91,3 +91,82 @@ let dailyChart = new Chart(dailyCanvas, {
     data: dailyData,
     options: dailyOptions
 });
+
+    // Get the canvas element
+const mobileCanvas = document.getElementById("mobile-chart");
+
+// Doughnut chart data
+const mobileData = {
+    labels: ["Desktop", "Tablet", "Phones"],
+    datasets: [{
+        label: '# of Users',
+        data: [2000, 550, 500],
+        borderWidth: 0,
+        backgroundColor: [
+            '#7477BF',
+            '#78CF82',
+            '#51B6C8'
+        ]
+    }]
+};
+
+// Doughnut chart options
+const mobileOptions = {
+    responsive: true, // Ensures responsiveness
+    maintainAspectRatio: false, // Allows it to scale properly
+    aspectRatio: 1,
+    plugins: {
+        legend: {
+            position: 'right', // Moves the legend to the right
+            labels: {
+                boxWidth: 20,
+                font: {
+                    weight: 'bold' // Makes labels bold
+                }
+            }
+        }
+    }
+};
+
+// Create the Doughnut chart
+let mobileChart = new Chart(mobileCanvas, {
+    type: 'doughnut',
+    data: mobileData,
+    options: mobileOptions
+});
+
+// Store the form fields in variables
+const user = document.getElementById("userField");
+const message = document.getElementById("messageField");
+const send = document.getElementById("send");
+
+// Add a click event listener on the "Send" button
+send.addEventListener('click', () => {
+    // Check if both fields are empty
+    if (user.value === "" && message.value === "") {
+        alert("Please fill out both user and message fields before sending.");
+    } 
+    // Check if only the user field is empty
+    else if (user.value === "") {
+        alert("Please fill out the user field before sending.");
+    } 
+    // Check if only the message field is empty
+    else if (message.value === "") {
+        alert("Please fill out the message field before sending.");
+    } 
+    // If both fields are filled
+    else {
+        alert(`Message successfully sent to: ${user.value}`);
+    }
+});
+
+const saveButton = document.getElementById("save");
+const cancelButton = document.getElementById("cancel");
+
+saveButton.addEventListener('click', () => {
+    alert("Settings have been saved!");
+});
+
+cancelButton.addEventListener('click', () => {
+    alert("Changes have been canceled.");
+});
