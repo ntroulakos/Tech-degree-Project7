@@ -81,7 +81,7 @@ body {
     padding: 10px;
     align-items: center;
     flex-grow: 1;
-    min-height: 150vh;
+    min-height: 250vh;
 }
 
 .sidebar a {
@@ -203,15 +203,29 @@ body {
 }
 
 .widget-container-half {
-    width: 95vw;
     display: flex;
     justify-content: center;
-    width: 45vw;
+    align-items: center; /* Centers vertically if needed */
+    width: 50vw; /* Makes it responsive */
+    min-width: 500px; /* Prevents it from being too small */
 }
 
-.widget-container-full{
+.widget-container-half canvas {
+    width: 100% !important;  /* Ensures it scales */
+    height: auto !important; /* Maintains aspect ratio */
+    max-width: 100%; /* Prevents overflow */
+}
+
+.widget-container-full {
     display: flex;
-    justify-content: center;  
+    justify-content: center;
+    width: 95vw;
+    min-width: 500px;
+}
+
+.widget-container-full canvas {
+    width: 100% !important;  /* Makes the canvas take full width */
+    height: auto !important; /* Maintains aspect ratio */
 }
 
 .daily, .mobile, .social, .members, .activity, .settings, .message {
@@ -430,7 +444,7 @@ textarea {
     }
 
     .sidebar {
-        min-height: 100vh;
+        min-height: 150vh;
     }
 
     .social {
@@ -463,6 +477,7 @@ textarea {
     .settings {
         order: 4; /* Moves "Settings" to the bottom */
     }    
+
 }
 
 @media (min-width: 1024px) { 
