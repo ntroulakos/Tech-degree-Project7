@@ -142,10 +142,27 @@ body {
 .alert {
     background: #9999ff;
     color: White;
-    padding: 10px;
     text-align: center;
     border-radius: 5px;
     margin: 0 20px;
+}
+
+.alert-banner {
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+}
+
+.alert-banner-close {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0 10px;
 }
 
 /* ===== Traffic Section ===== */
