@@ -136,8 +136,6 @@ body {
     margin-left: 20px;
 }
 
-
-
 /* ===== Alert Banner ===== */
 .alert {
     background: #9999ff;
@@ -167,9 +165,17 @@ body {
 
 /* ===== Traffic Section ===== */
 .traffic {
+    display: grid;
+    grid-column: span 2;
     margin-top: 12px;
     margin-left: 20px;
-  }
+}
+
+#traffic-chart {
+    margin-top: 20px;
+    width: 100%;
+    max-height: 400px;
+}
 
 .traffic-nav {
     list-style: none;
@@ -196,11 +202,16 @@ body {
     grid-column: span 1;
 }
 
-.widget-container-half, .widget-container-full {
+.widget-container-half {
     width: 95vw;
     display: flex;
     justify-content: center;
     width: 45vw;
+}
+
+.widget-container-full{
+    display: flex;
+    justify-content: center;  
 }
 
 .daily, .mobile, .social, .members, .activity, .settings, .message {
@@ -498,13 +509,6 @@ textarea {
     /* ===== Graph Sections (Bar & Doughnut) ===== */
     .daily, .mobile {
         grid-column: span 1;
-    }
-
-    .widget-container-half, .widget-container-full {
-        width: 95vw;
-        display: flex;
-        justify-content: center;
-        width: 45vw;
     }
 
     .membersactivity, .messagesettings{

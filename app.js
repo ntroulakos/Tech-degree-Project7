@@ -12,3 +12,48 @@ alertBanner.addEventListener('click', (e) => {
         alertBanner.style.display = "none";
     }
 });
+
+// Get the canvas element
+const trafficCanvas = document.getElementById("traffic-chart");
+
+// Define traffic data
+let trafficData = {
+    labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3",
+             "4-10", "11-17", "18-24", "25-31"],
+    datasets: [{
+        data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500, 2500],
+        backgroundColor: 'rgba(116, 119, 191, .3)',
+        borderWidth: 1,
+        tension: 0.3, // Smooth line
+        pointBackgroundColor: 'rgba(255, 255, 255, 1)',
+        pointBorderColor: 'rgba(116, 119, 191, 1)',
+        pointRadius: 5,
+    }]
+};
+
+// Define traffic chart options
+let trafficOptions = {
+    backgroundColor: 'rgba(112, 104, 201, .5)',
+    fill: true,
+    aspectRatio: 2.5,
+    animation: {
+        duration: 0
+    },
+    scales: {
+        y: {
+            beginAtZero: true
+        }
+    },
+    plugins: {
+        legend: {
+        display: false
+        }
+    }
+};
+
+// Create the traffic chart
+let trafficChart = new Chart(trafficCanvas, {
+    type: 'line',
+    data: trafficData,
+    options: trafficOptions
+});
