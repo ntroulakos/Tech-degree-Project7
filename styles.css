@@ -1,4 +1,4 @@
-/* ===== Reset and Global Styles ===== */
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +8,7 @@
 body {
     display: grid;
     grid-template-columns: 55px 1fr; /* Sidebar on the left, main content on the right */
-    grid-template-rows: auto 1fr; /* Header on top, main content below */
+    grid-template-rows: auto 1fr; 
     grid-template-areas: 
     "header header"
     "sidebar main"; 
@@ -58,6 +58,11 @@ body {
     height: 24px;
     border-radius: 50%;
     fill: white;  
+    transition: transform 0.3s ease-in-out;
+}
+
+#notifications:hover {
+    transform: scale(1.2) rotate(15deg);
 }
 
 .profile h3 {
@@ -67,20 +72,20 @@ body {
 
 /* ===== Sidebar Navigation ===== */
 .sidebar {
-    grid-area: sidebar; /* Ensure this matches the layout of the container */
+    grid-area: sidebar; 
     background: #2c3e50;
     color: white;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    height: 100vh; /* Ensure sidebar takes full height */
-    position: sticky; /* Optional: keeps the sidebar fixed as you scroll */
-    top: 0; /* Keeps it at the top */
+    height: 100vh; 
+    position: sticky; 
+    top: 0; 
     width: 45px;
     padding: 10px;
     align-items: center;
     flex-grow: 1;
-    min-height: 250vh;
+    overflow-y: auto;
 }
 
 .sidebar a {
@@ -194,7 +199,7 @@ body {
     color: white;
 }
 
-/* ===== Graph Sections (Bar & Doughnut) ===== */
+/* ===== Graph Sections ===== */
 .daily, .mobile {
     grid-column: span 1;
 }
@@ -202,14 +207,14 @@ body {
 .widget-container-half {
     display: flex;
     justify-content: center;
-    align-items: center; /* Centers vertically if needed */
+    align-items: center; 
     width: 50vw; 
-    min-width: 500px; /* Prevents it from being too small */
+    min-width: 500px; 
 }
 
 .widget-container-half canvas {
-    width: 100% !important;  /* Ensures it scales */
-    height: auto !important; /* Maintains aspect ratio */
+    width: 100% !important;  
+    height: auto !important; 
     max-width: 100%;
 }
 
@@ -222,13 +227,13 @@ body {
 
 
 .widget-container-full canvas {
-    width: 100% !important;  /* Makes the canvas take full width */
-    height: auto !important; /* Maintains aspect ratio */
+    width: 100% !important;  
+    height: auto !important; 
 }
 
 .daily, .mobile, .social, .members, .activity, .settings, .message {
-    border: 1px solid #ccc; /* Light grey border to divide sections */
-    background-color: white; /* Light background for sections */
+    border: 1px solid #ccc; 
+    background-color: white; 
 }
 
 .daily, .mobile {
@@ -236,7 +241,7 @@ body {
 }
 
 .social, .members, .activity, .settings, .message {
-    padding: 20px; /* Space inside each section */
+    padding: 20px; 
 }
 
 #mobile-chart {
@@ -248,21 +253,21 @@ body {
     gap: 15px;
     padding: 20px;
     display: grid;
-    grid-template-columns: 1fr; /* Ensure single column for small screens */
-    text-align: center; /* Center align the content */
+    grid-template-columns: 1fr;
+    text-align: center; 
 }
 
 .social h3 {
     text-align: left;
     margin-bottom: 10px;
-    grid-column: span 1; /* Ensure the h3 only spans one column */
-    text-align: left; /* Align the header to the left */
+    grid-column: span 1; 
+    text-align: left; 
     margin-bottom: 10px;
 }
 
 .social-box {
     background-color: #ccc;
-    border: 2px solid #ddd; /* Box border */
+    border: 2px solid #ddd; 
     padding: 15px;
     display: flex;
     justify-content: center;
@@ -318,13 +323,13 @@ body {
 }
 
 .members-list {
-    list-style: none; /* Removes bullet points */
+    list-style: none; 
     padding: 0;
     margin: 0;
 }
 
 .activity {
-    order: 2; /* Moves "Recent Activity" below "New Members" */
+    order: 2; 
 }
 
 .member-item, .activity-item {
@@ -332,7 +337,7 @@ body {
     align-items: center;
     gap: 15px;
     padding: 10px;
-    border-bottom: 1px solid #ccc; /* Divider */
+    border-bottom: 1px solid #ccc; 
 }
 
 .profile-image {
@@ -352,14 +357,14 @@ body {
 }
 
 .member-date, .activity-arrow {
-    margin-left: auto; /* Pushes date to the right */
+    margin-left: auto; 
     font-size: 14px;
     color: gray;
 }
 
 /* ===== Messaging Section ===== */
 .message {
-    order: 3; /* Moves "Message" below "Recent Activity" */
+    order: 3; 
 }
 
 .message form {
@@ -391,7 +396,7 @@ body {
 /* ===== Settings Section ===== */
 
 .settings {
-    order: 4; /* Moves "Settings" to the bottom */
+    order: 4; 
 }
 
 .settings select {
@@ -425,10 +430,10 @@ textarea {
 }
 
 #save, #cancel {
-    padding: 12px 24px; /* Add more padding to make the button bigger */
-    border-radius: 8px; /* Optional: Make corners rounded */
-    width: auto; /* Let the width adjust automatically based on padding */
-    height: auto; /* Adjust height based on content and padding */
+    padding: 12px 24px; 
+    border-radius: 8px; 
+    width: auto; 
+    height: auto; 
     flex-grow: 1;
 }
 
@@ -525,19 +530,15 @@ textarea {
         grid-template-columns: 50% 50%;
     }
 
-    .sidebar {
-        min-height: 150vh;
-    }
-
     .social {
-        grid-template-columns: repeat(3, 0.5fr); /* 3 equal-width columns */
+        grid-template-columns: repeat(3, 0.5fr); 
         gap: 0;
         padding: 20px;
         grid-column: 1 / span 2;
     }
     
     .social h3 {
-        grid-column: span 3; /* Make the title span across all columns */
+        grid-column: span 3; 
     }
 
     .social-box {
@@ -545,19 +546,19 @@ textarea {
     }
 
     .members {
-        order: 1; /* Moves "New Members" to the top */
+        order: 1; 
     }
 
     .activity {
-        order: 2; /* Moves "Recent Activity" below "New Members" */
+        order: 2;
     }
 
     .message {
-        order: 3; /* Moves "Message" below "Recent Activity" */
+        order: 3; 
     }
 
     .settings {
-        order: 4; /* Moves "Settings" to the bottom */
+        order: 4; 
     }    
 
 }
@@ -570,17 +571,17 @@ textarea {
     }
 
     .traffic {
-        grid-column: 1 / -1; /* Span across all columns (1 column in this case) */
+        grid-column: 1 / -1;
     }
     
     .traffic-header {
         display: flex;
         justify-content: space-between;
-        gap: 10px; /* Add some spacing */  
+        gap: 10px;  
     }
 
     .social {
-        grid-template-columns: repeat(3, 0.5fr); /* 3 equal-width columns */
+        grid-template-columns: repeat(3, 0.5fr); 
         display: grid;
         gap: 15px;
         padding: 20px;
@@ -589,7 +590,7 @@ textarea {
     }
     
     .social h3 {
-        grid-column: span 3; /* Make the title span across all columns */
+        grid-column: span 3; 
         text-align: left;
         margin-bottom: 10px;
         justify-self: left;

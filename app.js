@@ -16,7 +16,7 @@ alertBanner.addEventListener('click', (e) => {
 // Get the canvas element
 const trafficCanvas = document.getElementById("traffic-chart");
 
-// Define traffic data
+// traffic data
 let trafficData = {
     labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3",
              "4-10", "11-17", "18-24", "25-31"],
@@ -31,7 +31,7 @@ let trafficData = {
     }]
 };
 
-// Define traffic chart options
+// traffic chart options
 let trafficOptions = {
     backgroundColor: 'rgba(112, 104, 201, .5)',
     fill: true,
@@ -60,7 +60,7 @@ let trafficChart = new Chart(trafficCanvas, {
 
 const dailyCanvas = document.getElementById("daily-chart");
 
-// Data for daily traffic bar chart
+// Data traffic bar chart
 const dailyData = {
     labels: ["S", "M", "T", "W", "T", "F", "S"],
     datasets: [{
@@ -92,10 +92,9 @@ let dailyChart = new Chart(dailyCanvas, {
     options: dailyOptions
 });
 
-    // Get the canvas element
 const mobileCanvas = document.getElementById("mobile-chart");
 
-// Doughnut chart data
+// Doughnut chart 
 const mobileData = {
     labels: ["Desktop", "Tablet", "Phones"],
     datasets: [{
@@ -112,49 +111,44 @@ const mobileData = {
 
 // Doughnut chart options
 const mobileOptions = {
-    responsive: true, // Ensures responsiveness
-    maintainAspectRatio: false, // Allows it to scale properly
+    responsive: true, 
+    maintainAspectRatio: false, 
     aspectRatio: 1,
     plugins: {
         legend: {
-            position: 'right', // Moves the legend to the right
+            position: 'right', 
             labels: {
                 boxWidth: 20,
                 font: {
-                    weight: 'bold' // Makes labels bold
+                    weight: 'bold' 
                 }
             }
         }
     }
 };
 
-// Create the Doughnut chart
 let mobileChart = new Chart(mobileCanvas, {
     type: 'doughnut',
     data: mobileData,
     options: mobileOptions
 });
 
-// Store the form fields in variables
+//form fields in variables
 const user = document.getElementById("userField");
 const message = document.getElementById("messageField");
 const send = document.getElementById("send");
 
-// Add a click event listener on the "Send" button
+//event listener on the "Send" button
 send.addEventListener('click', () => {
-    // Check if both fields are empty
     if (user.value === "" && message.value === "") {
         alert("Please fill out both user and message fields before sending.");
     } 
-    // Check if only the user field is empty
     else if (user.value === "") {
         alert("Please fill out the user field before sending.");
     } 
-    // Check if only the message field is empty
     else if (message.value === "") {
         alert("Please fill out the message field before sending.");
     } 
-    // If both fields are filled
     else {
         alert(`Message successfully sent to: ${user.value}`);
     }
