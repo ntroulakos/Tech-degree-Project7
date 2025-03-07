@@ -436,6 +436,7 @@ textarea {
     margin-bottom: 15px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .setting-item label {
@@ -446,7 +447,7 @@ textarea {
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
+    width: 80px;
     height: 34px;
     margin-left: 12px;
   }
@@ -488,9 +489,9 @@ textarea {
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX(46px);
+    -ms-transform: translateX(46px);
+    transform: translateX(46px);
   }
 
   input:checked + .slider:after {
